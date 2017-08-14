@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Edit <%=auction.name %></h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/auctions/<%= auction._id %>?_method=PUT" method="POST">
+            
+            <div class="form-group">
+                    <input class="form-control" type="text" name="auction[name]" value="<%= auction.name %>">
+                </div>
+            <div class="form-group">
+                    <input class="form-control" type="text" name="auction[photo1]" value="<%= auction.photo1 %>">
+                </div>
+              
+            <div class="form-group">
+                    <input class="form-control" type="text" name="auction[photo2]" value="<%= auction.photo2 %>">
+                </div>
+            <div class="form-group">
+                    <input class="form-control" type="text" name="auction[photo3]" value="<%= auction.photo3 %>">
+                </div>
+            <div class="form-group">
+                    <input class="form-control" type="text" name="auction[photo4]" value="<%= auction.photo4 %>">
+                </div>
+            <div class="form-group">
+                    <input class="form-control" type="text" name="auction[photo5]" value="<%= auction.photo5 %>">
+                </div>
+            <div class="form-group">
+                <input class="form-control" type="number" name="auction[price]" value="<%= auction.price %>"min="1000" step="100" >
+                </div>
+            <div class="form-group">
+                    <input class="form-control" type="text" name="auction[description]" value="<%= auction.description %>">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/auctions">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>
+

@@ -1,0 +1,34 @@
+<% include ../partials/header %>
+ <div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             <h1>Welcome To Dukamall auction bay!</h1>
+             <p>View our auction materials  from all over the world</p>
+             
+             <% if(currentUser && currentUser.isAdmin){ %>
+             <p>
+                <a class="btn btn-primary btn-large" href="/auctions/new">Add New Auction Item</a>
+             </p>
+             
+             <% } %>
+         </div>
+     </header>
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% auctions.forEach(function(auction){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= auction.photo1 %>">
+                   <div class="caption">
+                       <h4><%= auction.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/auctions/<%= auction._id %>" class="btn btn-primary">Start bidding</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

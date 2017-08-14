@@ -1,0 +1,83 @@
+            <% include ../partials/header %>
+            <div class="container">
+                <div class="row">
+                     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                   <div class="col-md-3 col-sm-6">
+                   <div class="thumbnail">
+                   <img src="<%= auction.photo1 %>">
+                   </div>
+                   </div>
+                   <div class="col-md-3 col-sm-6">
+                   <div class="thumbnail">
+                   <img src="<%= auction.photo2 %>">
+                   </div>
+                   </div>
+                    <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail">
+                   <img src="<%= auction.photo3 %>">
+                   </div>
+                   </div>
+                    <div class="col-md-3 col-sm-6">
+                   <div class="thumbnail">
+                   <img src="<%= auction.photo4 %>">
+                   </div>
+                   </div>
+                   
+                   </div>
+                </div>
+                
+                  <div class="col-md-12">
+                    <div class="thumbnail">
+                         <img class="img-responsive" src="<%= auction.photo1 %>">
+                         <div class="caption-full">
+                        <h4 class="pull-right">Reserve Price:Ksh: <%=auction.price %></h4>
+                        <h4><a><%=auction.name%></a></h4>
+                        <p><%= auction.description %></p>
+                        <p>
+  <em>Submitted by: <%= auction.author.username %>, <%= moment(auction.createdAt).fromNow() %></em>
+</p>
+                       <% if(currentUser && auction.author.id.equals(currentUser._id)  ||currentUser && currentUser.isAdmin){ %>
+                        <a class="btn btn-xs btn-warning" href="/auctions/<%= auction._id %>/edit">Edit</a>
+                        <form class="delete-form" action="/auctions/<%= auction._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                   <% } %>
+                    </div>
+                </div>
+      <div class="well">
+  <div class="text-right">
+      <p id="demo">Count down:
+<a class="btn btn-success" href="/auctions/<%= auction._id %>/bids/new">Place Your Bid For <%=auction.name%> </a>
+      </p>
+</div>
+<hr>
+<% auction.bids.forEach(function(bid){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= bid.author.username %></strong>
+                            <span class="pull-right">Submitted:<%= moment(bid.createdAt).fromNow() %></span>
+                            <p>
+                              Ksh:  <%= bid.price %> 
+        <% if(currentUser && auction.author.id.equals(currentUser._id) ||currentUser && currentUser.isAdmin){ %>
+                            </p>
+    
+
+                           <a class="btn btn-xs btn-warning" 
+                               href="/auctions/<%=auction._id %>/bids/<%=bid._id %>/edit">Edit</a>
+                            <form class="delete-form" action="/auctions/<%=auction._id %>/bids/<%=bid._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                                 <hr>
+                            </form>
+                        <% } %>
+                        </div>
+                       
+                    </div>
+                <% }) %>
+             </div>
+         </div>
+       </div>
+    </div>
+</div>
+</div>
+                 </div>
+            <% include ../partials/footer %>

@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Create a New Auction Item</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/auctions" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="photo1" placeholder="photo1 url">
+                </div>
+              
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="photo2" placeholder="photo2 url">
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="photo3" placeholder="photo3 url">
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="photo4" placeholder="photo4 url">
+                </div>
+                 <div class="form-group">
+                    <input class="form-control" type="text" name="photo5" placeholder="photo5 url">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="price" placeholder="price"min="1000" step="100" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="description" placeholder="description">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/auctions">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>
+
