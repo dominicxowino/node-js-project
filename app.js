@@ -13,7 +13,13 @@ var express     = require("express"),
     User        = require("./models/user"),
     seedDB      = require("./seeds");
     
-mongoose.connect("mongodb://localhost/auction");
+
+
+// mongoose.connect("mongodb://localhost/auction");
+mongoose.connect("mongodb://dominicowino:databasepassword@ds145223.mlab.com:45223/auction");
+
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
