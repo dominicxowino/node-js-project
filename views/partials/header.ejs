@@ -9,6 +9,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="/stylesheets/main.css">
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
     <body>
 <nav class="navbar navbar-default">
@@ -27,7 +28,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/auctions">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="/auctions"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a></li>
         <li><a href="/about">About Us</a></li>
         
       </ul>
@@ -42,7 +43,7 @@
            <li><a href="#">Signed In As <%= currentUser.username %></a></li>
            <%}%>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>User Management <span class="caret"></span></a>
           <ul class="dropdown-menu">
                 <% if(currentUser){ %>
            <li><a href="#">Signed In As <%= currentUser.username %></a></li>
