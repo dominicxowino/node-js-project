@@ -14,10 +14,8 @@ var express     = require("express"),
     seedDB      = require("./seeds");
     
 
-
-// mongoose.connect("mongodb://localhost/auction");
-mongoose.connect("mongodb://dominicowino:databasepassword@ds145223.mlab.com:45223/auction");
-
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v10";
+mongoose.connect(url);
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -31,6 +29,15 @@ app.use(flash());
 var bidRoutes    = require("./routes/bids"),
     auctionRoutes = require("./routes/auctions"),
     indexRoutes      = require("./routes/index");
+    
+    
+//     console.log(process.env.DATABASEURL);
+// mongoose.connect("mongodb://localhost/auction");
+// // mongoose.connect("mongodb://dominicowino:databasepassword@ds145223.mlab.com:45223/auction");
+
+    
+    
+    
     
 app.locals.moment = require('moment');
 // PASSPORT CONFIGURATION

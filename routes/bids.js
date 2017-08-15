@@ -37,8 +37,7 @@ router.post("/",middleware.isLoggedIn, function(req, res){
                bid.author.username = req.user.username;
                //save bid
                  bid.save();
-                 
-                 
+               
                auction.bids.push(bid);
                auction.save();
                 req.flash("success", "Successfully Added Your Bid");

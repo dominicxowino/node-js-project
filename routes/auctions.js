@@ -26,12 +26,13 @@ router.post("/",middleware.isLoggedIn, function(req, res){
        var photo4 = req.body.photo4;
         var photo5 = req.body.photo5;
         var price= req.body.price;
+        var __v = req.body.__v;
     var desc = req.body.description;
      var author = {
         id: req.user._id,
         username: req.user.username
-    }
-    var newAuction = {name:name,price:price,author:author, photo1:photo1, photo2:photo2, photo3:photo3,photo4: photo4, photo5: photo5, description: desc};
+    };
+    var newAuction = {name:name,price:price,author:author,bidn:__v, photo1:photo1, photo2:photo2, photo3:photo3,photo4: photo4, photo5: photo5, description: desc};
     // Create a new auction item and save to DB
     Auction.create(newAuction, function(err, newlyCreated){
         if(err){
@@ -101,12 +102,6 @@ router.delete("/:id",middleware.checkAuctionOwnership, function(req, res){
    });
 });
 
-//middleware
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
+
 
 module.exports = router;

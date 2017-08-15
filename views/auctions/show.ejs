@@ -33,6 +33,8 @@
                         <h4 class="pull-right">Reserve Price:Ksh: <%=auction.price %></h4>
                         <h4><a><%=auction.name%></a></h4>
                         <p><%= auction.description %></p>
+                      <h3 class="btn btn-success">Current Bids:<strong> <%= auction.__v %> </strong></h3>
+                      
                         <p>
   <em>Submitted by: <%= auction.author.username %>, <%= moment(auction.createdAt).fromNow() %></em>
 </p>
@@ -56,17 +58,16 @@
                         <div class="col-md-12">
                             <strong><%= bid.author.username %></strong>
                             <span class="pull-right">Submitted:<%= moment(bid.createdAt).fromNow() %></span>
+                            
                             <p>
                               Ksh:  <%= bid.price %> 
         <% if(currentUser && auction.author.id.equals(currentUser._id) ||currentUser && currentUser.isAdmin){ %>
                             </p>
-    
-
-                           <a class="btn btn-xs btn-warning" 
-                               href="/auctions/<%=auction._id %>/bids/<%=bid._id %>/edit">Edit</a>
-                            <form class="delete-form" action="/auctions/<%=auction._id %>/bids/<%=bid._id %>?_method=DELETE" method="POST">
-                                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
-                                 <hr>
+     <a class="btn btn-xs btn-warning" 
+             href="/auctions/<%=auction._id %>/bids/<%=bid._id %>/edit">Edit</a>
+        <form class="delete-form" action="/auctions/<%=auction._id %>/bids/<%=bid._id %>?_method=DELETE" method="POST">
+                <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+                    <hr>
                             </form>
                         <% } %>
                         </div>
