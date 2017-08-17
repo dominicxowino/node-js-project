@@ -58,7 +58,6 @@
                         <div class="col-md-12">
                             <strong><%= bid.author.username %></strong>
                             <span class="pull-right">Submitted:<%= moment(bid.createdAt).fromNow() %></span>
-                            
                             <p>
                               Ksh:  <%= bid.price %> 
         <% if(currentUser && auction.author.id.equals(currentUser._id) ||currentUser && currentUser.isAdmin){ %>
