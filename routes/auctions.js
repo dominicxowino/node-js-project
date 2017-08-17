@@ -6,14 +6,18 @@ var middleware = require("../middleware");
 
 //INDEX - show all Item auctions
 router.get("/", function(req, res){
-    // Get all auction items from DB
-    Auction.find({}, function(err, allAuctions){
+  if(req.query.search){
+      
+  } else{
+// Get all auction items from DB
+   Auction.find({}, function(err, allAuctions){
        if(err){
            console.log(err);
        } else {
           res.render("auctions/index",{auctions:allAuctions});
        }
     });
+  }
 });
 
 //CREATE - add new auction item to DB
