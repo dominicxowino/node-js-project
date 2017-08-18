@@ -14,7 +14,7 @@
                     seedDB      = require("./seeds");
                     
                 
-                var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v10";
+                var url = process.env.DATABASEURL || "mongodb://localhost/auction";
                 mongoose.connect(url);
                 
                 
