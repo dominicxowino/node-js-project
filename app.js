@@ -18,7 +18,7 @@
                 
          mongoose.connect('mongodb://localhost/auction');
           
-              "mongo ds151153.mlab.com:51153/auction -u <dominic> -p <databasepassword>";
+              
   //mongoose.connect("mongodb://<dominic>:<databasepassword>@ds151153.mlab.com:51153/auction") 
     var url = process.env.DATABASEURL || "mongodb://localhost/auction";
                 
