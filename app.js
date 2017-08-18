@@ -15,11 +15,12 @@
                     
                     
                     
-                   
-             mongoose.connect('mongodb://localhost/auction');
-              // mongoose.connect('mongodb://127.0.0.1:27017/auction');
- // mongoose.connect("mongodb://<databasenameisit>:<databasenameisit>@ds149353.mlab.com:49353/databasenameisit") 
-          var url = process.env.DATABASEURL || "mongodb://localhost/auction";
+                
+         mongoose.connect('mongodb://localhost/auction');
+          
+              "mongo ds151153.mlab.com:51153/auction -u <dominic> -p <databasepassword>";
+  //mongoose.connect("mongodb://<dominic>:<databasepassword>@ds151153.mlab.com:51153/auction") 
+    var url = process.env.DATABASEURL || "mongodb://localhost/auction";
                 
                 app.use(bodyParser.urlencoded({extended: true}));
                 app.set("view engine", "ejs");
