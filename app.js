@@ -12,12 +12,10 @@
                     Bid  = require("./models/bid"),
                     User        = require("./models/user"),
                     seedDB      = require("./seeds");
-                    
+                  
                 
-               // var url = process.env.DATABASEURL || "mongodb://localhost/auction";
-                mongoose.connect("mongodb://<dominicowino>:<databasepassword>@ds145223.mlab.com:45223/auction");
-                //mongodb://<dbuser>:<dbpassword>@ds145223.mlab.com:45223/auction
-                mongoose.connect("mongodb://localhost/yelp_camp_v10");
+              var url = process.env.DATABASEURL || "mongodb://localhost/auction";
+                
                 app.use(bodyParser.urlencoded({extended: true}));
                 app.set("view engine", "ejs");
                 app.use(express.static(__dirname + "/public"));
