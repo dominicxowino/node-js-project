@@ -20,7 +20,7 @@
           
               
   //mongoose.connect("mongodb://<dominic>:<databasepassword>@ds151153.mlab.com:51153/auction") 
-    var url = process.env.DATABASEURL || "mongodb://localhost/auction";
+        var url = process.env.DATABASEURL || "mongodb://localhost/auction";
                 
                 app.use(bodyParser.urlencoded({extended: true}));
                 app.set("view engine", "ejs");
