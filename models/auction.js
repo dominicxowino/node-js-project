@@ -1,3 +1,5 @@
+
+
 var mongoose = require("mongoose");
 
 var auctionSchema = new mongoose.Schema({

@@ -14,11 +14,14 @@
                     seedDB      = require("./seeds");
                     
                     
+                    //  var Mongoose = require('mongoose');
+                    //   connectionUrl = mongodb://dominic:some_pwd@some_host:27017/some_db?authSource=admin
+                    //  Mongoose.connect(connectionUrl); 
                     
-                
-         mongoose.connect('mongodb://localhost/auction');
-          
-              
+        //                   mongoose.Promise = global.Promise;
+        //                   //mongoose.connect('mongodb://localhost/auction');
+         // mongoose.connect("mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
+    mongoose.connect("mongodb://localhost/auction" || "mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
   
                 app.use(bodyParser.urlencoded({extended: true}));
                 app.set("view engine", "ejs");
