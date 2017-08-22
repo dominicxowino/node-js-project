@@ -37,7 +37,9 @@
                       
                         <p>
   <em>Submitted by: <%= auction.author.username %>, <%= moment(auction.createdAt).fromNow() %></em>
-</p>
+ 
+ </p>
+  
                        <% if(currentUser && auction.author.id.equals(currentUser._id)  ||currentUser && currentUser.isAdmin){ %>
                         <a class="btn btn-xs btn-warning" href="/auctions/<%= auction._id %>/edit">Edit</a>
                         <form class="delete-form" action="/auctions/<%= auction._id %>?_method=DELETE" method="POST">

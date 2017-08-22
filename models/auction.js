@@ -11,7 +11,7 @@ var auctionSchema = new mongoose.Schema({
     photo4: String,
     photo5: String,
     description: String,
-    createdAt:{ type:Date, Default:Date.now},
+    createdAt:{ type:Date, default:Date.now},
     
     author: {
       id: {
