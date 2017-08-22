@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 
 var bidSchema = mongoose.Schema({
     price: {type: String,required:true, minlength:3,},
-    createdAt:{ type:Date, Default:Date.now},
+    createdAt:{ type:Date, default:Date.now},
    author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

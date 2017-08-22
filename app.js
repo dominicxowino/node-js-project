@@ -12,19 +12,18 @@
                     Bid  = require("./models/bid"),
                     User        = require("./models/user"),
                     seedDB      = require("./seeds");
-                    var timeago = require("timeago-simple");
-
+                   
     
                
                     //  var Mongoose = require('mongoose');
                     //   connectionUrl = mongodb://dominic:some_pwd@some_host:27017/some_db?authSource=admin
                     //  Mongoose.connect(connectionUrl); 
-                    
+                    // console.log( process.env.DATABASEURL);
         //                   mongoose.Promise = global.Promise;
-                          //mongoose.connect('mongodb://localhost/auction');
-         mongoose.connect("mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
+                         mongoose.connect(process.env.DATABASEURL);
+        // mongoose.connect("mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
    // mongoose.connect("mongodb://localhost/auction" || "mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
-  
+ 
                 app.use(bodyParser.urlencoded({extended: true}));
                 app.set("view engine", "ejs");
                 app.use(express.static(__dirname + "/public"));
