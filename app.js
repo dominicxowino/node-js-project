@@ -22,8 +22,8 @@
                     
         //                   mongoose.Promise = global.Promise;
                           //mongoose.connect('mongodb://localhost/auction');
-        // mongoose.connect("mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
-    mongoose.connect("mongodb://localhost/auction" || "mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
+         mongoose.connect("mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
+   // mongoose.connect("mongodb://localhost/auction" || "mongodb://dominic:databasepassword@ds151153.mlab.com:51153/auction");
   
                 app.use(bodyParser.urlencoded({extended: true}));
                 app.set("view engine", "ejs");
