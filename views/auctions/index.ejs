@@ -2,8 +2,8 @@
  <div class="container">
      <header class="jumbotron">
          <div class="container">
-             <h1>Welcome To Dukamall auction bay!</h1>
-             <p>View our auction products and items from all over the world</p>
+             <h2>Welcome to Auctionke.com bay!</h2>
+             <p>We auction Cars,Televisions,Fridges,phones,Woofers,Carpets,household Items and many many more...</p>
              
              <% if(currentUser && currentUser.isAdmin){ %>
              <p>
@@ -24,7 +24,7 @@
                        <h4><%= auction.name %></h4>
                    </div>
                    <p>
-                       <a href="/auctions/<%= auction._id %>" class="btn btn-primary">Start bidding</a>
+                       <a href="/auctions/<%= auction._id %>" class="btn btn-primary">Start buying</a>
                    </p>
                 </div>
             </div>

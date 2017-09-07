@@ -65,6 +65,7 @@ function seedDB(){
                                 console.log(err);
                             } else {
                                 auction.bids.push(bid);
+                                bid.sort();
                                 auction.save();
                                 console.log("Created new bid");
                             }

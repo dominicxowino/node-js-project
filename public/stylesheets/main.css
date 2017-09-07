@@ -13,3 +13,7 @@
 .delete-form {
     display: inline;
 }
+
+.pull-right{
+    color:red;
+}

@@ -62,10 +62,15 @@
                             <span class="pull-right">Submitted:<%= moment(bid.createdAt).fromNow() %></span>
                             <p>
                               Ksh:  <%= bid.price %> 
-        <% if(currentUser && auction.author.id.equals(currentUser._id) ||currentUser && currentUser.isAdmin){ %>
+        <% if(currentUser && auction.author.id.equals(currentUser._id) ||currentUser && bid.author.id.equals(currentUser._id) ||currentUser && currentUser.isAdmin){ %>
                             </p>
      <a class="btn btn-xs btn-warning" 
              href="/auctions/<%=auction._id %>/bids/<%=bid._id %>/edit">Edit</a>
+             
+               <% } %>
+               
+               <% if( currentUser && currentUser.isAdmin){ %>
+             
         <form class="delete-form" action="/auctions/<%=auction._id %>/bids/<%=bid._id %>?_method=DELETE" method="POST">
                 <input type="submit" class="btn btn-xs btn-danger" value="Delete">
                     <hr>
