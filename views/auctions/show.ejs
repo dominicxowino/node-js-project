@@ -58,10 +58,10 @@
 <% auction.bids.forEach(function(bid){ %>
                     <div class="row">
                         <div class="col-md-12">
-                            <strong><%= bid.author.username %></strong>
-                            <span class="pull-right">Submitted:<%= moment(bid.createdAt).fromNow() %></span>
+                            <strong class="author-name"><%= bid.author.username %></strong>
+                            <span class="pull-right" id="time" >Submitted:<%= moment(bid.createdAt).fromNow() %></span>
                             <p>
-                              Ksh:  <%= bid.price %> 
+                             <span class="price"> Ksh:  <%= bid.price %> </span>
         <% if(currentUser && auction.author.id.equals(currentUser._id) ||currentUser && bid.author.id.equals(currentUser._id) ||currentUser && currentUser.isAdmin){ %>
                             </p>
      <a class="btn btn-xs btn-warning" 

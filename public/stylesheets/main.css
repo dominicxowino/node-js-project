@@ -17,3 +17,49 @@
 .pull-right{
     color:red;
 }
+.author-name{
+    font-size:15px;
+    color:green;
+     text-transform: capitalize;
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+    
+    .jumbotron{
+        width:100%;
+    }
+    
+    .index-j{
+       display:none;
+    }
+}
+
+/* start of desktop styles */
+
+@media screen and (max-width: 991px) {
+     /* start of large tablet styles */
+
+}
+
+@media screen and (max-width: 767px) {
+     /* start of medium tablet styles */
+
+}
+
+@media screen and (max-width: 479px) {
+     /* start of phone styles */
+
+}
+
+
+#time{
+    color:green;
+}
+
+.price{
+    font-size:15px;
+    font-weight:bold;
+}
