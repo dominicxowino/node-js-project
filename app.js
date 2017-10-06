@@ -38,9 +38,7 @@
                 var bidRoutes    = require("./routes/bids"),
                     auctionRoutes = require("./routes/auctions"),
                     indexRoutes      = require("./routes/index");
-                    
-                    app.locals.moment = require('moment');
-             
+                   
                 // PASSPORT CONFIGURATION
                 app.use(require("express-session")({
                     secret: "This is my secret!",

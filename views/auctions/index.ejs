@@ -22,6 +22,7 @@
                    <img src="<%= auction.photo1 %>">
                    <div class="caption">
                        <h4><%= auction.name %></h4>
+                       <h4 class="btn btn-success">Status:<strong> <%=auction.status %> </strong></h4>
                    </div>
                    <p>
                        <a href="/auctions/<%= auction._id %>" class="btn btn-primary">Start buying</a>

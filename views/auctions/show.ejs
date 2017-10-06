@@ -30,13 +30,15 @@
                     <div class="thumbnail">
                          <img class="img-responsive" src="<%= auction.photo1 %>">
                          <div class="caption-full">
-                        <h4 class="pull-right">Reserve Price:Ksh: <%=auction.price %></h4>
+                        <p></p><h4 class="pull-right">Reserve Price:Ksh: <%=auction.price %></h4></p>
+                        
                         <h4><a><%=auction.name%></a></h4>
                         <p><%= auction.description %></p>
-                      <h3 class="btn btn-success">Current Bids:<strong> <%= auction.__v %> </strong></h3>
-                      
+                      <p><h3 class="btn btn-success">Current Bids:<strong> <%= auction.__v %> </strong></h3></p>
+                      <p><h4 class="btn btn-success">Status:<strong> <%=auction.status %> </strong></h4></p>
+                     
                         <p>
-  <em>Submitted by: <%= auction.author.username %>, <%= moment(auction.createdAt).fromNow() %></em>
+  <em>BY: <%= auction.author.username %>, <%= moment(auction.createdAt).fromNow() %></em>
  
  </p>
   

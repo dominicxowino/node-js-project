@@ -17,6 +17,10 @@ router.get("/", function(req, res){
 router.get("/about", function(req,res){
     res.render("about.ejs");
 });
+
+router.get("/signup", function(req,res){
+    res.render("signup.ejs");
+});
 //  ===========
 // AUTH ROUTES
 //  ===========
@@ -39,7 +43,7 @@ router.post("/register", function(req, res){
           
         passport.authenticate("local")(req, res, function(){
              req.flash("success", "Welcome to Dukamall Auction Bay " + user.username);
-           res.redirect("/auctions"); 
+           res.redirect(" /auction "); 
         });
     });
 });

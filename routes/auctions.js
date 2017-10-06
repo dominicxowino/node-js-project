@@ -24,6 +24,7 @@ router.get("/", function(req, res){
 router.post("/",middleware.isLoggedIn, function(req, res){
     // get data from form and add to auction items array
     var name = req.body.name;
+      var status= req.body.status;
     var photo1 = req.body.photo1;
      var photo2 = req.body.photo2;
       var photo3 = req.body.photo3;
@@ -36,7 +37,7 @@ router.post("/",middleware.isLoggedIn, function(req, res){
         id: req.user._id,
         username: req.user.username
     };
-    var newAuction = {name:name,price:price,author:author,bidn:__v, photo1:photo1, photo2:photo2, photo3:photo3,photo4: photo4, photo5: photo5, description: desc};
+    var newAuction = {name:name,price:price,author:author,bidn:__v, status:status, photo1:photo1, photo2:photo2, photo3:photo3,photo4: photo4, photo5: photo5, description: desc};
     // Create a new auction item and save to DB
     Auction.create(newAuction, function(err, newlyCreated){
         if(err){
@@ -57,7 +58,8 @@ router.get("/new",middleware.isLoggedIn, function(req, res){
 // SHOW - shows more info about one auction item
 router.get("/:id", function(req, res){
     //find the auction with provided ID
-    Auction.findById(req.params.id).populate("bids").exec(function(err, foundAuction){
+    var sort = { name: 1 };
+    Auction.findById(req.params.id).populate("bids").sort(sort).exec(function(err, foundAuction){
         if(err){
             console.log(err);
         } else {

@@ -4,12 +4,14 @@ var mongoose = require("mongoose");
 
 var auctionSchema = new mongoose.Schema({
     name: String,
+    status: String,
     price: String,
     photo1: String,
     photo2: String,
     photo3: String,
     photo4: String,
     photo5: String,
+   
     description: String,
     createdAt:{ type:Date, default:Date.now},
     
