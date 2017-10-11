@@ -1,3 +1,4 @@
+"use strict";
 var express = require("express");
 var router  = express.Router();
 var Auction = require("../models/auction");
@@ -5,21 +6,25 @@ var middleware = require("../middleware");
 
 
 //INDEX - show all Item auctions
-router.get("/", function(req, res){
-  if(req.query.search){
+// router.get("/", function(req, res){
+//   if(req.query.search){
       
-  } else{
-// Get all auction items from DB
-   Auction.find({}, function(err, allAuctions){
-       if(err){
-           console.log(err);
-       } else {
-          res.render("auctions/index",{auctions:allAuctions});
-       }
-    });
-  }
-});
-
+//   } else{
+// // Get all auction items from DB
+//   Auction.find({}, function(err, allAuctions){
+//       if(err){
+//           console.log(err);
+//       } else {
+//           //good now we go to line 128
+//           res.status(200).json({
+//               auctions: allAuctions
+//           });
+//         //   res.render("auctions/index",{auctions:allAuctions});
+//       }
+//     });
+//   }
+// });
+//OK
 //CREATE - add new auction item to DB
 router.post("/",middleware.isLoggedIn, function(req, res){
     // get data from form and add to auction items array
@@ -108,6 +113,108 @@ router.delete("/:id",middleware.checkAuctionOwnership, function(req, res){
    });
 });
 
+let perPage = 30;
+let page = 1;
+let value = -1;
+let output = {
+  data: null,
+  pages: {
+    current: page,
+    prev: 0,
+    hasPrev: false,
+    next: 0,
+    hasNext: false,
+    total: 0
+  },
+  items: {
+    begin: ((page * perPage) - perPage) + 1,
+    end: page * perPage,
+    total: 0
+  }
+};
 
+function init(req, res, next) {
+  if (req.query && req.query.perPage) {
+    perPage = parseInt(req.query.perPage, 10);
+  }
+  if (req.query && req.query.page) {
+    page = parseInt(req.query.page, 10);
+  }
+  if (req.query && req.query.value) {
+    value = parseInt(req.query.value, 10);
+  }
+}
+ 
+function setOutput(auctions, count) {
+  output.items.total = count;
+  output.data = auctions;
+  output.pages.total = Math.ceil(output.items.total / perPage);
+  output.pages.current = page;
+  if(output.pages.current < output.pages.total) {
+    output.pages.next = Number(output.pages.current) + 1;
+  } else {
+    output.pages.next = 0;
+  }
+  output.pages.hasNext = (output.pages.next !== 0);
+  output.pages.prev = output.pages.current - 1;
+  output.pages.hasPrev = (output.pages.prev !== 0);
+  if (output.items.end > output.items.total) {
+    output.items.end = output.items.total;
+  }
+}
+function paginate(req, res, next) {
+  init(req, res);
+  
+    Auction
+    .find()
+    .sort({"created": value})
+    .skip((page - 1) * perPage)
+    .limit(perPage)
+    .exec(function(err, auctions) {
+      if(err) return next(err);
+      Auction.count().exec(function(err, count) {
+        if(err) return res.status(500).json(err);
+        setOutput(auctions, count);
+        console.log(output);
+        res.render("auctions/index.ejs", {
+          auctions: output.data,
+          pages: output.pages,
+          items: output.items
+        });
+      });
+    });
+}
+ 
+router.get('/', function(req,res,next){
+     paginate(req,res,next);
+ });
+
+// function paginate(req, res, next){
+//   var perPage = 12;
+//   var page = req.params.page;
+//   Auction
+//   .find({})
+//   .skip(perPage * page)
+//   .limit(perPage)
+//   .exec(function(err,allAuctions){
+      
+//     if(err) return next(err.message);
+//     Auction.count().exec(function(err,count){
+//         if(err) return next(err.message);
+//         res.render('auctions/index',{
+//         auctions: allAuctions,
+//         pages:count/perPage
+//         });
+//     });
+// });
+//  }   
+// router.get('/', function(req,res,next){
+//      paginate(req,res,next);
+//  });
+     
+//  router.get('/page/:page', function(req,res,next){
+     
+//     paginate(req,res,next);
+//  });
 
 module.exports = router;

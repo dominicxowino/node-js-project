@@ -16,10 +16,11 @@
      </header>
      
      <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-        <% auctions.forEach(function(auction){ %>
+       <% auctions.forEach(function(auction){ %>
+      
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
-                   <img src="<%= auction.photo1 %>">
+                <img src="<%= auction.photo1 %>">
                    <div class="caption">
                        <h4><%= auction.name %></h4>
                        <h4 class="btn btn-success">Status:<strong> <%=auction.status %> </strong></h4>
@@ -30,7 +31,49 @@
                 </div>
             </div>
         <% }); %>
-    </div>
+        </div>
+        <div class="row">
+ <nav>
+ <div class="col-md-6 col-md-offset-3 text-center">
+ <ul class="pagination pagination-lg">
+ <% if(pages.current > 1 && pages.hasPrev === true) { %>
+ <li>
+      <a href="/auctions?page=<%= pages.prev %>" aria-label="Previous">
+        <span aria-hidden="true">«</span>
+      </a>
+    </li>
+    <% } else { %>
+    <li>
+      <a class="btn btn-xs disabled" href="#" aria-label="Previous">
+        <span aria-hidden="true">«</span>
+      </a>
+    </li>
+    <% } %>
+    <li>
+    <% for(var i = 1; i < pages.total +1; i++) { %> 
+    <li><a href="/auctions?page=<%= i %>"><%= i %></a></li>
+    <% } %>
+    </li>
+    <% if(pages.current < pages.total && pages.hasNext === true) { %>
+    <li>
+      <a href="/auctions?page=<%= pages.next %>" aria-label="Next">
+        <span aria-hidden="true">»</span>
+      </a>
+    </li>
+    <% } else { %>
+    <li>
+      <a class="btn btn-xs disabled" href="#" aria-label="Next">
+        <span aria-hidden="true">»</span>
+      </a>
+    </li>
+    <% } %>
+ </ul>
+ </div>
+ </nav> 
+ </div>
+        
+
+   
 </div>
 
 <% include ../partials/footer %>

@@ -1,7 +1,7 @@
 
 
 var mongoose = require("mongoose");
-
+var Auction = require("../models/auction");
 var auctionSchema = new mongoose.Schema({
     name: String,
     status: String,
@@ -30,5 +30,8 @@ var auctionSchema = new mongoose.Schema({
       }
    ]
 });
+
+
+
 
 module.exports = mongoose.model("Auction", auctionSchema);
