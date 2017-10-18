@@ -40,7 +40,7 @@
                 //requiring routes
                 var bidRoutes    = require("./routes/bids"),
                     auctionRoutes = require("./routes/auctions"),
-                    adminRoutes = require("./routes/admins"),
+                    
                     indexRoutes      = require("./routes/index");
                    
                 // PASSPORT CONFIGURATION
@@ -66,12 +66,12 @@
                 
                 app.use("/", indexRoutes);
                 app.use("/auctions", auctionRoutes);
-                app.use("/admins", adminRoutes);
+                
                 
                 app.use("/auctions/:id/bids", bidRoutes);
-                // app.get('*', function(req, res) {
-                //     res.redirect('/');
-                // });
+                app.get('*', function(req, res) {
+                    res.redirect('/');
+                });
                 
                 
                 
