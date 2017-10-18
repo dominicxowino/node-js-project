@@ -1,4 +1,4 @@
- 
+ //https://ide.c9.io/learnwithcolt/webdevbootcamp
 
                 var express     = require("express"),
                     app         = express(),
@@ -11,6 +11,8 @@
                     Auction  = require("./models/auction"),
                     Bid  = require("./models/bid"),
                     User        = require("./models/user"),
+               
+                   
                     seedDB      = require("./seeds");
                    
     
@@ -35,9 +37,10 @@
                 app.locals.moment = require('moment');
                 // seedDB();
                 
-                //requring routes
+                //requiring routes
                 var bidRoutes    = require("./routes/bids"),
                     auctionRoutes = require("./routes/auctions"),
+                    adminRoutes = require("./routes/admins"),
                     indexRoutes      = require("./routes/index");
                    
                 // PASSPORT CONFIGURATION
@@ -59,14 +62,16 @@
                              res.locals.success = req.flash("success");
                                next();
                             });
-               
+             
                 
                 app.use("/", indexRoutes);
                 app.use("/auctions", auctionRoutes);
+                app.use("/admins", adminRoutes);
+                
                 app.use("/auctions/:id/bids", bidRoutes);
-                app.get('*', function(req, res) {
-                    res.redirect('/');
-                });
+                // app.get('*', function(req, res) {
+                //     res.redirect('/');
+                // });
                 
                 
                 

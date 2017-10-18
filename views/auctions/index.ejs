@@ -6,8 +6,9 @@
              <p class="index-j">We auction Cars,Televisions,Fridges,phones,Woofers,Carpets,household Items etc..</p>
              
              <% if(currentUser && currentUser.isAdmin){ %>
-             <p>
+             <p class="add-item">
                 <a class="btn btn-primary btn-large" href="/auctions/new">Add New Auction Item</a>
+                <a href="/auctions" class="btn btn-lg btn-success">ADMIN AUCTIONS.</a>
              </p>
              
              <% } %>
@@ -19,7 +20,7 @@
        <% auctions.forEach(function(auction){ %>
       
             <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
+                <div class="thumbnail" id="index-photo">
                 <img src="<%= auction.photo1 %>">
                    <div class="caption">
                        <h4><%= auction.name %></h4>

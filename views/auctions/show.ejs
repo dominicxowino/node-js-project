@@ -36,7 +36,7 @@
                     <div class="thumbnail">
                          <img class="img-responsive" src="<%= auction.photo1 %>">
                          <div class="caption-full">
-                        <p></p><h4 class="pull-right">Reserve Price:Ksh: <%=auction.price %></h4></p>
+                        <p><h4 class="pull-right">Reserve Price:Ksh: <%=auction.price %></h4></p>
                         
                         <h4><a><%=auction.name%></a></h4>
                         <p><%= auction.description %></p>
@@ -44,23 +44,31 @@
                       <p><h4 class="btn btn-success">Status:<strong> <%=auction.status %> </strong></h4></p>
                      
                         <p>
-  <em>BY: <%= auction.author.username %>, <%= moment(auction.createdAt).fromNow() %></em>
+  <em>Submitted By:<a  href="/users/<%= auction.author.id %>"><%= auction.author.username %></a>, <%= moment(auction.createdAt).fromNow() %></em>
+ 
  
  </p>
   
-                       <% if(currentUser && auction.author.id.equals(currentUser._id)  ||currentUser && currentUser.isAdmin){ %>
-                        <a class="btn btn-xs btn-warning" href="/auctions/<%= auction._id %>/edit">Edit</a>
-                        <form class="delete-form" action="/auctions/<%= auction._id %>?_method=DELETE" method="POST">
-                            <button class="btn btn-xs btn-danger">Delete</button>
-                        </form>
+               <% if(currentUser && auction.author.id.equals(currentUser._id)  ||currentUser && currentUser.isAdmin){ %>
+                <a class="btn btn-xs btn-warning" href="/auctions/<%= auction._id %>/edit">Edit</a>
+                <form class="delete-form" action="/auctions/<%= auction._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-xs btn-danger">Delete</button>
+                </form>
                    <% } %>
                     </div>
                 </div>
       <div class="well">
   <div class="text-right">
+      <%if (auction.status){ %>
       <p id="demo">
-<a class="btn btn-success" href="/auctions/<%= auction._id %>/bids/new">Place Your Bid For <%=auction.name%> </a>
-      </p>
+          <a class="btn btn-success" href="/auctions/<%= auction._id %>/bids/new">Place Your Bid For <%=auction.name%> </a>
+</p>
+<% } else { %>
+
+<p> <h4 class="pull-right">This Item Has Been sold</p>
+
+ <% } %>
+
 </div>
 <hr>
 <% auction.bids.forEach(function(bid){ %>
