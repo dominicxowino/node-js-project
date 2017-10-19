@@ -13,6 +13,7 @@ var UserSchema = new mongoose.Schema({
     avatar:{type: String, },
     account:{type: String, },
     isAdmin: {type: Boolean, default:false},
+    isSuperAdmin:{type: Boolean,default:false },
 
 });
 

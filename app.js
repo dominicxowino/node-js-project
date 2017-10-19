@@ -11,7 +11,7 @@
                     Auction  = require("./models/auction"),
                     Bid  = require("./models/bid"),
                     User        = require("./models/user"),
-               
+                    middleware = require("./middleware"),
                    
                     seedDB      = require("./seeds");
                    
@@ -40,8 +40,7 @@
                 //requiring routes
                 var bidRoutes    = require("./routes/bids"),
                     auctionRoutes = require("./routes/auctions"),
-                    
-                    indexRoutes      = require("./routes/index");
+                   indexRoutes      = require("./routes/index");
                    
                 // PASSPORT CONFIGURATION
                 app.use(require("express-session")({
@@ -62,16 +61,28 @@
                              res.locals.success = req.flash("success");
                                next();
                             });
-             
+              app.get('/admin/index',middleware.isLoggedIn, function (req, res) {
+                User.find({}, function(err, allUsers){
+                      if(err){
+                          console.log(err);
+                      } else {
+                          res.render("admins/index",{users:allUsers});
+                      }
+                    });
+                });
+//NEW - show form to create new user 
+app.get("/admin/new",middleware.isLoggedIn, function(req, res){
+     res.render("admins/new"); 
+});
                 
                 app.use("/", indexRoutes);
                 app.use("/auctions", auctionRoutes);
-                
+              
                 
                 app.use("/auctions/:id/bids", bidRoutes);
-                app.get('*', function(req, res) {
-                    res.redirect('/');
-                });
+                // app.get('*', function(req, res) {
+                //     res.redirect('/');
+                // });
                 
                 
                 

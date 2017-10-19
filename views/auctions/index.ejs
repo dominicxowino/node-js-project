@@ -8,10 +8,15 @@
              <% if(currentUser && currentUser.isAdmin){ %>
              <p class="add-item">
                 <a class="btn btn-primary btn-large" href="/auctions/new">Add New Auction Item</a>
-                <a href="/auctions" class="btn btn-lg btn-success">ADMIN AUCTIONS.</a>
+                <% } %>
+                <% if( currentUser &&  currentUser.isSuperAdmin){ %>
+                 <a class="btn btn-primary btn-large" href="/auctions/new">Add New Auction Item</a>
+                <a href="/admin/index" class="btn btn-primary">View users.</a>
+                <a href="/admin/new" class="btn btn-primary">Register.</a>
+                 <% } %>
              </p>
              
-             <% } %>
+             
             
          </div>
      </header>

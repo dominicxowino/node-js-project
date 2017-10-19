@@ -30,7 +30,9 @@ router.get("/register", function(req, res){
 });
 //handle sign up logic
 router.post("/register", function(req, res){
+     
     var newUser = new User({
+      
     username: req.body.username,
     phone: req.body.phone,
     email: req.body.email,
@@ -38,11 +40,16 @@ router.post("/register", function(req, res){
     lastName: req.body.lastName,
     avatar: req.body.avatar,
     account: req.body.account,
+    status: req.body.status,
    
     });
     if(req.body.adminCode ==="secretcode12345forsoap"){
       newUser.isAdmin =true;
+   }
+    if(req.body.superAdminCode ==="awachoniansuperadminchoke!"){
+      newUser.isSuperAdmin =true;
   }
+   
     User.register(newUser, req.body.password, function(err, user){
      if(err){
          console.log(err);

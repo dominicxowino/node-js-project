@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+ <div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             <h2>Welcome to Auctionke.com bay!</h2>
+             <p class="index-j">We auction Cars,Televisions,Fridges,phones,Woofers,Carpets,household Items etc..</p>
+             
+             
+            
+         </div>
+     </header>
+     
+    
+      
+      
+            <table class="table table-bordered table-hover">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Username</th>
+                  <th>Account</th>
+                  <th>Phone</th>
+                   <th>Email</th>
+                   <th>Status</th>
+                   <th>Edit</th>
+                   <th>Delete</th>
+                   </tr>
+          </thead>
+           <% users.forEach(function(user){ %>
+          <tbody>
+             <tr>
+            <td> <%= user.firstName + " " + user.lastName %> </td>
+            <td> <%= user.username %> </td>  
+            <td><%=  user.account %> </td>
+             <td><%=  user.phone %> </td>
+              <td><%=  user.email %> </td>
+              <td><%=  user.status %> </td>
+            </tr>
+             
+            </tbody>
+             <% }); %>
+            </table>
+            
+             </div>
+                    
+
+   
+</div>
+
+<% include ../partials/footer %>
