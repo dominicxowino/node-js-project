@@ -23,9 +23,9 @@
      
      <div class="row text-center" style="display:flex; flex-wrap: wrap;">
        <% auctions.forEach(function(auction){ %>
-      
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail" id="index-photo">
+      <div class="row">
+    <div class="col-sm-6 col-md-4">
+     <div class="thumbnail" id="index-photo">
                 <img src="<%= auction.photo1 %>">
                    <div class="caption">
                        <h4><%= auction.name %></h4>
@@ -36,6 +36,7 @@
                    </p>
                 </div>
             </div>
+          
         <% }); %>
         </div>
         <div class="row">
